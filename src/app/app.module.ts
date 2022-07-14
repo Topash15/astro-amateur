@@ -12,6 +12,7 @@ import { PortfolioListComponent } from './portfolio-list/portfolio-list.componen
 import { PortfolioDetailsComponent } from './portfolio-details/portfolio-details.component';
 import { LearningPageComponent } from './learning-page/learning-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
+import { LearningDetailsComponent } from './learning-details/learning-details.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AboutPageComponent } from './about-page/about-page.component';
     PortfolioDetailsComponent,
     LearningPageComponent,
     AboutPageComponent,
+    LearningDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { AboutPageComponent } from './about-page/about-page.component';
       { path: 'portfolio', component: PortfolioListComponent },
       { path: 'portfolio/:portfolioId', component: PortfolioDetailsComponent},
       { path: 'learning', component: LearningPageComponent},
-      { path: 'about', component: AboutPageComponent}
+      { path: 'about', component: AboutPageComponent},
+      { path: 'learning/:articleId', component: LearningDetailsComponent}
     ]),
   ],
   providers: [
