@@ -33,6 +33,10 @@ nav {
     margin: 0 2em;
 }
 
+.nav-link{
+    color: var(--text);
+}
+
 @media (max-width:769px) {
 
     .nav-list-item{

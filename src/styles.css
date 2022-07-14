@@ -28,7 +28,7 @@ body {
 
 a{
   text-decoration: none;
-  color: var(--text);
+  color: var(--teritiary);
 }
 
 a:hover{
@@ -64,8 +64,4 @@ a:hover{
 
 .back-link:hover{
   opacity: 0.5;
-}
-
-.inline-link{
-  color: var(--teritiary);
 }
