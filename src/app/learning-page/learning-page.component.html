@@ -1,0 +1,12 @@
+<section class="learning-container container">
+    <h2>Learning Articles</h2>
+    <ul class="learning-list" *ngFor="let article of articles">
+        <li class="learning-list-item">
+            <div>
+                <h3 class="learning-item-title">{{article.title}}</h3>
+                <p class="learning-item-summary">{{article.summary}}</p>
+                <a class="learning-item-link inline-link" [routerLink]="['/learning',article.id]">Click here to open article.</a>
+            </div>
+        </li>
+    </ul>
+</section>
