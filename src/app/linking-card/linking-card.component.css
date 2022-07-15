@@ -43,10 +43,18 @@
   .card-container{
     grid-template-columns: 50% 50%;
   }
+
+  .photo-title{
+    font-size:3vw;
+  }
 }
 
 @media (max-width: 426px) {
   .card-container{
     grid-template-columns: 100%;
+  }
+
+  .photo-title{
+    font-size:6vw;
   }
 }
