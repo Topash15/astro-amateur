@@ -1,0 +1,36 @@
+<section class="port-details-section">
+  <a class="back-link" href="#/portfolio">Back</a>
+  <div class="container" *ngIf="portfolioItem">
+    <img class="port-img" [src]="sourcePrefix + portfolioItem.source" />
+    <div class="port-text-container">
+      <h2 class="port-title">{{ portfolioItem.title }}</h2>
+      <p class="port-date">{{ trimmedDate }}</p>
+      <p class="port-description">{{ portfolioItem.description }}</p>
+      <p class="port-description">{{ portfolioItem.detailedDescription }}</p>
+    </div>
+    <div class="port-specs-container">
+      <table class="port-table">
+        <tr class="port-table-row">
+          <th class="port-table-header">Camera</th>
+          <td class="port-table-data">{{ portfolioItem.camera }}</td>
+        </tr>
+        <tr class="port-table-row">
+          <th class="port-table-header">Lens</th>
+          <td class="port-table-data">{{ portfolioItem.lens }}</td>
+        </tr>
+        <tr class="port-table-row">
+          <th class="port-table-header">Iso</th>
+          <td class="port-table-data">{{ portfolioItem.iso }}</td>
+        </tr>
+        <tr class="port-table-row">
+          <th class="port-table-header">Aperature</th>
+          <td class="port-table-data">{{ portfolioItem.aperature }}</td>
+        </tr>
+        <tr class="port-table-row">
+          <th class="port-table-header">Exposure Time</th>
+          <td class="port-table-data">{{ portfolioItem.exposureTime }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>

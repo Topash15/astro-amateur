@@ -1,0 +1,16 @@
+.port-details-section{
+    margin: var(--section-margin) 0;
+}
+
+.port-img{
+    max-width: 100%;
+    border-radius: 16px;
+}
+
+.port-table-header{
+    text-align: left;
+}
+
+.port-table-data{
+    text-align: right;
+}

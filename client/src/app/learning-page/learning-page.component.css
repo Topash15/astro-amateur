@@ -1,0 +1,17 @@
+.learning-container {
+  margin: var(--section-margin) auto;
+}
+
+.learning-list{
+    padding: 0;
+    list-style: none;
+}
+
+.learning-item-title{
+    margin: 0;
+}
+
+.learning-list-item{
+    margin: 1em 0;
+    padding: 1em;
+}
