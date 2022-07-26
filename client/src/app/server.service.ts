@@ -21,6 +21,6 @@ export class ServerService {
   }
 
   getPhotos(){
-    return this.request('GET', `${environment.serverURL}/portfolio`);
+    return this.request('GET', `${environment.serverURL}/api/portfolio/photos`);
   }
 }
