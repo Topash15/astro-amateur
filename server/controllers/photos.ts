@@ -1,9 +1,9 @@
 import { Query, Connect } from "../config/mysql";
 
-const getAllPhotos = (req, res, next) => {
+const getAllPhotos = (req:any, res:any, next:any) => {
   console.log("Getting books");
 
-  let query = "SELECT * FROM Photos";
+  let query = "SELECT * FROM photos";
 
   Connect()
     .then((connection) => {

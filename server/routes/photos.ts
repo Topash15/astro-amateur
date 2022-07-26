@@ -3,6 +3,6 @@ import controller from '../controllers/photos';
 
 const router = express.Router();
 
-router.get('/get/portfolio', controller.getAllPhotos);
+router.get('/get/photos', controller.getAllPhotos);
 
 export default router;

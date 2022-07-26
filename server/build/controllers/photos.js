@@ -1,31 +1,34 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var mysql_1 = require("../config/mysql");
 var getAllPhotos = function (req, res, next) {
     console.log("Getting books");
-    var query = "SELECT * FROM Photos";
+    var query = "SELECT * FROM photos";
     (0, mysql_1.Connect)()
         .then(function (connection) {
         (0, mysql_1.Query)(connection, query)
             .then(function (results) {
             return res.status(200).json({
-                results: results
+                results: results,
             });
-        })["catch"](function (error) {
+        })
+            .catch(function (error) {
             console.log(error);
             return res.status(500).json({
                 message: error.message,
-                error: error
+                error: error,
             });
-        })["finally"](function () {
+        })
+            .finally(function () {
             connection.end;
         });
-    })["catch"](function (error) {
+    })
+        .catch(function (error) {
         console.log(error);
         return res.status(500).json({
             message: error.message,
-            error: error
+            error: error,
         });
     });
 };
-exports["default"] = { getAllPhotos: getAllPhotos };
+exports.default = { getAllPhotos: getAllPhotos };
