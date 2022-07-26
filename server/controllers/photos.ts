@@ -6,7 +6,7 @@ const createPhoto = (req: Request, res: Response, next: NextFunction) => {
   console.log("Creating book");
 
   let {
-    name,
+    title,
     description,
     detailedDescription,
     camera,
@@ -23,7 +23,7 @@ const createPhoto = (req: Request, res: Response, next: NextFunction) => {
   } = req.body;
 
   let query = `INSERT INTO photos(
-    name,
+    title,
     description,
     detailedDescription,
     camera,
@@ -38,7 +38,7 @@ const createPhoto = (req: Request, res: Response, next: NextFunction) => {
     theme,
     exposureTime)
     VALUE (    
-      "${name}",
+      "${title}",
       "${description}",
       "${detailedDescription}",
       "${camera}",
@@ -119,19 +119,19 @@ const getAllPhotos = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-/** Returns a photo based on an id */
+/** Returns a photo based on an ID provided in params */
 const getPhotoById = (req: Request, res: Response, next: NextFunction) => {
   console.log("Finding book");
 
   let id = req.params.id;
-  let query = "SELECT * FROM photos WHERE ";
+  let query = `SELECT * FROM photos WHERE id = ${id}`;
 
   Connect()
     .then((connection) => {
       Query(connection, query)
-        .then((results) => {
+        .then((result) => {
           return res.status(200).json({
-            results,
+            result,
           });
         })
         .catch((error) => {
@@ -156,4 +156,41 @@ const getPhotoById = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-export default { getAllPhotos, createPhoto };
+/** Deletes photo */
+const deletePhotoById = (req: Request, res: Response, next: NextFunction) => {
+  console.log("Deleting book");
+
+  let id = req.params.id;
+  let query = `DELETE FROM photos WHERE id = ${id}`;
+
+  Connect()
+    .then((connection) => {
+      Query(connection, query)
+        .then((result) => {
+          return res.status(200).json({
+            result,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+
+          return res.status(500).json({
+            message: error.message,
+            error,
+          });
+        })
+        .finally(() => {
+          connection.end;
+        });
+    })
+    .catch((error) => {
+      console.log(error);
+
+      return res.status(500).json({
+        message: error.message,
+        error,
+      });
+    });
+}
+
+export default { getAllPhotos, createPhoto, getPhotoById, deletePhotoById };
