@@ -4,6 +4,7 @@ import mysql from "mysql";
 import http from "http";
 import config from "./config/config";
 import photoRoutes from "./routes/photos";
+import articleRoutes from './routes/articles';
 
 const router = express.Router();
 const app = express();
@@ -47,6 +48,7 @@ router.use((req, res, next) => {
 
 /** Routes go here */
 router.use("/api/portfolio", photoRoutes);
+router.use("/api/learning", articleRoutes);
 
 /** Error handling */
 router.use((req, res, next) => {
@@ -63,11 +65,3 @@ app.listen(config.server.port, () => {
     `Server is running ${config.server.hostname}:${config.server.port}`
   );
 });
-
-// const httpServer = http.createServer(router);
-
-// httpServer.listen(config.server.port, () =>
-//   console.log(
-//     `Server is running ${config.server.hostname}:${config.server.port}`
-//   )
-// );

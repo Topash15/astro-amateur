@@ -12,7 +12,7 @@ export class PortfolioItem {
   source: string;
   link: string;
   date: Date;
-  group: string;
+  theme: string;
   tags: string[];
   exposureTime: number;
 
@@ -24,7 +24,7 @@ export class PortfolioItem {
     thumbnail: string,
     hdSource: string,
     link: '',
-    group: '',
+    theme: '',
     tags: [],
     date: string,
     camera: '',
@@ -41,7 +41,7 @@ export class PortfolioItem {
     this.hdSource = hdSource;
     this.description = description;
     this.link = link;
-    this.group = group;
+    this.theme = theme;
     this.tags = tags;
     if (date) {
       this.date = new Date(date);
@@ -57,7 +57,7 @@ export class PortfolioItem {
   }
 }
 
-export const portfolioGroups: string[] = ['Rocket, Moon'];
+export const portfoliothemes: string[] = ['Rocket, Moon'];
 
 export const portfolioContent: PortfolioItem[] = [
   {
@@ -72,7 +72,7 @@ export const portfolioContent: PortfolioItem[] = [
     source: '../../assets/portfolio-contents/sd-images/full-moon-6-14-22.jpg',
     hdSource: '../../assets/portfolio-contents/hd-images/full-moon-6-14-22.jpg',
     link: '',
-    group: 'Moon',
+    theme: 'Moon',
     tags: ['moon', 'full'],
     date: new Date(2022, 5, 14),
     camera: 'Canon EOS 550D',
@@ -93,7 +93,7 @@ export const portfolioContent: PortfolioItem[] = [
     hdSource:
       '../../assets/portfolio-contents/hd-images/full-moon-behind-branches.png',
     link: '',
-    group: 'Moon',
+    theme: 'Moon',
     tags: ['moon', 'full'],
     date: new Date(2022, 5, 15),
     camera: 'Canon EOS 550D',
@@ -111,7 +111,7 @@ export const portfolioContent: PortfolioItem[] = [
     source: '../../assets/portfolio-contents/sd-images/almost-super-moon.jpg',
     hdSource: '../../assets/portfolio-contents/hd-images/almost-super-moon.png',
     link: '',
-    group: 'Moon',
+    theme: 'Moon',
     tags: ['supermoon', 'moon', 'full'],
     date: new Date(2022, 6, 11),
     camera: 'Canon EOS 550D',
@@ -130,7 +130,7 @@ export const portfolioContent: PortfolioItem[] = [
     source: '../../assets/portfolio-contents/sd-images/half-moon.jpg',
     hdSource: '../../assets/portfolio-contents/hd-images/half-moon.png',
     link: '',
-    group: 'Moon',
+    theme: 'Moon',
     tags: ['moon', 'half'],
     date: new Date(2022, 6, 6),
     camera: 'Canon EOS 550D',
@@ -147,7 +147,7 @@ export const portfolioContent: PortfolioItem[] = [
     source: '../../assets/portfolio-contents/sd-images/crescent-moon.jpg',
     hdSource: '../../assets/portfolio-contents/hd-images/crescent-moon.png',
     link: '',
-    group: 'Moon',
+    theme: 'Moon',
     tags: ['moon', 'crescent'],
     date: new Date(2022, 5, 26),
     camera: 'Canon EOS 550D',
@@ -164,7 +164,7 @@ export const portfolioContent: PortfolioItem[] = [
     source: '../../assets/portfolio-contents/sd-images/waning-gibbous.jpg',
     hdSource: '../../assets/portfolio-contents/hd-images/waning-gibbous.png',
     link: '',
-    group: 'Moon',
+    theme: 'Moon',
     tags: ['moon', 'crescent'],
     date: new Date(2022, 5, 19),
     camera: 'Canon EOS 550D',
@@ -181,7 +181,7 @@ export const portfolioContent: PortfolioItem[] = [
     source: '../../assets/portfolio-contents/sd-images/super-buck-moon.webp',
     hdSource: '../../assets/portfolio-contents/hd-images/super-buck-moon.png',
     link: '',
-    group: 'Moon',
+    theme: 'Moon',
     tags: ['moon', 'full', 'super', 'buck'],
     date: new Date(2022, 6, 14),
     camera: 'Canon EOS 550D',
@@ -198,7 +198,7 @@ export const portfolioContent: PortfolioItem[] = [
     source: '../../assets/portfolio-contents/sd-images/super-moon-sunrise.webp',
     hdSource: '../../assets/portfolio-contents/hd-images/super-moon-sunrise.png',
     link: '',
-    group: 'Moon',
+    theme: 'Moon',
     tags: ['moon', 'super', 'full', 'buck', 'sunrise', 'landscape'],
     date: new Date(2022, 6, 14),
     camera: 'Canon EOS 550D',
@@ -219,7 +219,7 @@ export const portfolioContent: PortfolioItem[] = [
     hdSource:
       '../../assets/portfolio-contents/hd-images/falcon-9-venting-lo2.png',
     link: '',
-    group: 'Rocket',
+    theme: 'Rocket',
     tags: ['spacex', 'falcon9', 'venting', 'SES'],
     date: new Date(2022, 5, 29),
     camera: 'Canon EOS 550D',
@@ -238,7 +238,7 @@ export const portfolioContent: PortfolioItem[] = [
     hdSource:
       '../../assets/portfolio-contents/hd-images/Falcon-9-T-Minus-0.png',
     link: '',
-    group: 'Rocket',
+    theme: 'Rocket',
     tags: ['spacex', 'falcon9', 'liftoff', 'SES'],
     date: new Date(2022, 5, 29),
     camera: 'Canon EOS 550D',
@@ -259,7 +259,7 @@ export const portfolioContent: PortfolioItem[] = [
     hdSource:
       '../../assets/portfolio-contents/hd-images/lift-off-between-two-heads.png',
     link: '',
-    group: 'Rocket',
+    theme: 'Rocket',
     tags: ['spacex', 'falcon9', 'liftoff', 'SES'],
     date: new Date(2022, 5, 29),
     camera: 'Canon EOS 550D',
@@ -278,7 +278,7 @@ export const portfolioContent: PortfolioItem[] = [
     hdSource:
       '../../assets/portfolio-contents/hd-images/falcon-9-mid-flight.png',
     link: '',
-    group: 'Rocket',
+    theme: 'Rocket',
     tags: ['spacex', 'falcon9', 'flying', 'SES'],
     date: new Date(2022, 5, 29),
     camera: 'Canon EOS 550D',
@@ -298,7 +298,7 @@ export const portfolioContent: PortfolioItem[] = [
     hdSource:
       '../../assets/portfolio-contents/hd-images/nature-vs-technology.png',
     link: '',
-    group: 'Rocket',
+    theme: 'Rocket',
     tags: ['spacex', 'falcon9', 'pad', 'SES'],
     date: new Date(2022, 5, 29),
     camera: 'Canon EOS 550D',

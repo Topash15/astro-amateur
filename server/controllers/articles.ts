@@ -1,57 +1,23 @@
 import { NextFunction, Request, Response } from "express";
 import { Query, Connect } from "../config/mysql";
 
-/** Creates a new photo */
-const createPhoto = (req: Request, res: Response, next: NextFunction) => {
-  console.log("Creating photo");
+/** Creates a new article */
+const createArticle = (req: Request, res: Response, next: NextFunction) => {
+  console.log("Creating article");
 
-  let {
-    title,
-    description,
-    detailedDescription,
-    camera,
-    lens,
-    iso,
-    aperature,
-    thumbnail,
-    hdSource,
-    source,
-    link,
-    date,
-    theme,
-    exposureTime,
-  } = req.body;
+  let { date, title, summary, body, link, images } = req.body;
 
-  let query = `INSERT INTO photos(
-    title,
-    description,
-    detailedDescription,
-    camera,
-    lens,
-    iso,
-    aperature,
-    thumbnail,
-    hdSource,
-    source,
-    link,
+  let query = `INSERT INTO articles(
     date,
-    theme,
-    exposureTime)
+    title,
+    summary,
+    body)
     VALUE (    
-      "${title}",
-      "${description}",
-      "${detailedDescription}",
-      "${camera}",
-      "${lens}",
-      "${iso}",
-      "${aperature}",
-      "${thumbnail}",
-      "${hdSource}",
-      "${source}",
-      "${link}",
       "${date}",
-      "${theme}",
-      "${exposureTime}")`;
+      "${title}",
+      "${summary}",
+      "${body}"
+     )`;
 
   Connect()
     .then((connection) => {
@@ -83,11 +49,11 @@ const createPhoto = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-/** Returns array of all photos in the database*/
-const getAllPhotos = (req: Request, res: Response, next: NextFunction) => {
-  console.log("Getting photos");
+/** Returns array of all articles in the database*/
+const getAllArticles = (req: Request, res: Response, next: NextFunction) => {
+  console.log("Getting articles");
 
-  let query = "SELECT * FROM photos";
+  let query = "SELECT * FROM articles";
 
   Connect()
     .then((connection) => {
@@ -119,12 +85,12 @@ const getAllPhotos = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-/** Returns a photo based on an ID provided in params */
-const getPhotoById = (req: Request, res: Response, next: NextFunction) => {
-  console.log("Finding photo");
+/** Returns a article based on an ID provided in params */
+const getArticleById = (req: Request, res: Response, next: NextFunction) => {
+  console.log("Finding article");
 
   let id = req.params.id;
-  let query = `SELECT * FROM photos WHERE id = ${id}`;
+  let query = `SELECT * FROM articles WHERE id = ${id}`;
 
   Connect()
     .then((connection) => {
@@ -156,12 +122,12 @@ const getPhotoById = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-/** Deletes photo */
-const deletePhotoById = (req: Request, res: Response, next: NextFunction) => {
-  console.log("Deleting photo");
+/** Deletes article */
+const deleteArticleById = (req: Request, res: Response, next: NextFunction) => {
+  console.log("Deleting article");
 
   let id = req.params.id;
-  let query = `DELETE FROM photos WHERE id = ${id}`;
+  let query = `DELETE FROM articles WHERE id = ${id}`;
 
   Connect()
     .then((connection) => {
@@ -191,6 +157,11 @@ const deletePhotoById = (req: Request, res: Response, next: NextFunction) => {
         error,
       });
     });
-}
+};
 
-export default { getAllPhotos, createPhoto, getPhotoById, deletePhotoById };
+export default {
+  getAllArticles,
+  createArticle,
+  getArticleById,
+  deleteArticleById,
+};

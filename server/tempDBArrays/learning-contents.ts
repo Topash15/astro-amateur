@@ -10,11 +10,11 @@ export class photo {
 
 export class link {
   source: string;
-  text?: string;
+  title?: string;
 
-  constructor(source: string, text?: string) {
+  constructor(source: string, title?: string) {
     this.source = source;
-    this.text = text;
+    this.title = title;
   }
 }
 
@@ -62,6 +62,7 @@ export const learningContent: LearningContentObject[] = [
     body: 'This article gives a great guide to make your moon photos pop. It focuses on using Lightroom, but I was able to follow along with a free alternative, RawTherapee. The main points that I took out of the article are as follows. Set the white balance using a dropper tool. For RawTherapee, this tool is next to the hand towards the top right. You want to click your dropper within the lunar seas. Then, overexpose in your editor. The goal is to almost completely white, but you should still be able to make out the lunar seas. Then, decrease the contrast. This is where the detail pops out at you. At this point, you can also play around with the black levels to get additional detail. Finally add some saturation to make those lunar seas pop. The seas do have a slight blue tinge that you can bring out with some saturation. Go ahead and crop, then add your photo to the queue because you are done!',
     articles: [
       {
+        title: "Lightroom Editing Tips for Awesome Moon Photos",
         source:
           'https://digital-photography-school.com/lightroom-moon-editing-tips-for-awesome-moon-photos/',
       },
@@ -86,21 +87,21 @@ export const learningContent: LearningContentObject[] = [
     articles: [
       {
         source: "https://www.canon.co.uk/for_home/product_finder/cameras/digital_slr/eos_550d/",
-        text: "Spec sheet for the Canon 550D. You'll have to purchase secondhand."
+        title: "Spec sheet for the Canon 550D. You'll have to purchase secondhand."
       },
       {
         source:
           'https://smile.amazon.com/Opteka-1000mm-Telephoto-Digital-Cameras/dp/B074QVXXTF/ref=sr_1_1?keywords=opteka+500mm&qid=1657841873&sprefix=opteka+500mm%2Caps%2C91&sr=8-1',
-        text: 'Opteka 500mm with attachable 2.0x teleconverter and a Canon mount',
+        title: 'Opteka 500mm with attachable 2.0x teleconverter and a Canon mount',
       },
       {
         source:
           'https://www.ebay.com/itm/363279698003?_trkparms=amclksrc%3DITM%26aid%3D111001%26algo%3DREC.SEED%26ao%3D1%26asc%3D20160908105057%26meid%3D6b72e8b17095410c8a99715a5e06812d%26pid%3D100675%26rk%3D2%26rkt%3D15%26sd%3D373849318437%26itm%3D363279698003%26pmt%3D0%26noa%3D1%26pg%3D2380057%26brand%3DUnbranded&_trksid=p2380057.c100675.m4236&_trkparms=pageci%3A53abfd79-03ce-11ed-8b2a-825ac7fa8724%7Cparentrq%3Aff15b6431810a45ea8e35668fff1a27a%7Ciid%3A1',
-        text: "The generic intervalometer. It's cheap and works for most situations that I need from it.",
+        title: "The generic intervalometer. It's cheap and works for most situations that I need from it.",
       },
       {
         source: "https://smile.amazon.com/AmazonBasics-Lightweight-Camera-Mount-Tripod/dp/B00XI87KV8/ref=sr_1_4?crid=1VPFRAWREE7TW&keywords=amazon+basics+tripod&qid=1657842100&sprefix=amazon+basics+tripod%2Caps%2C87&sr=8-4",
-        text: "Amazon Basics Tripod. Only get if you have a light camera or are on a super tight budget"
+        title: "Amazon Basics Tripod. Only get if you have a light camera or are on a super tight budget"
       }
     ],
     photos: [],
