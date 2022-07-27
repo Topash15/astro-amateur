@@ -5,6 +5,8 @@ import http from "http";
 import config from "./config/config";
 import photoRoutes from "./routes/photos";
 import articleRoutes from './routes/articles';
+import taglistRoutes from './routes/taglist';
+import tagRoutes from './routes/tags';
 
 const router = express.Router();
 const app = express();
@@ -49,6 +51,8 @@ router.use((req, res, next) => {
 /** Routes go here */
 router.use("/api/portfolio", photoRoutes);
 router.use("/api/learning", articleRoutes);
+router.use("/api/taglist", taglistRoutes);
+router.use("/api/tags", tagRoutes);
 
 /** Error handling */
 router.use((req, res, next) => {
