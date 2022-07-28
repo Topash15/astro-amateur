@@ -1,18 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { LearningContentObject, learningContent} from '../../assets/learning-contents/learning-contents';
+import { SharedService } from '../shared.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-learning-page',
   templateUrl: './learning-page.component.html',
-  styleUrls: ['./learning-page.component.css']
+  styleUrls: ['./learning-page.component.css'],
 })
 export class LearningPageComponent implements OnInit {
+  articles: any[] = [];
 
-  articles: LearningContentObject[] = learningContent;
-
-  constructor() { }
+  constructor(private service: SharedService) {}
 
   ngOnInit(): void {
+    this.getArticles();
   }
 
+  /**
+   * Get all articles
+   */
+  private getArticles() {
+    this.service
+      .getArticles()
+      .subscribe((data) => (this.articles = data.results));
+  }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {portfolioContent, PortfolioItem, portfolioGroups} from '../../assets/portfolio-contents/portfolio-contents';
 import { SharedService } from '../shared.service';
 
 @Component({
@@ -9,8 +8,7 @@ import { SharedService } from '../shared.service';
 })
 export class PortfolioListComponent implements OnInit {
 
-  photos: any[] = portfolioContent;
-  groups: string[] = portfolioGroups;
+  photos: any[] = [];
   type: string = 'portfolio';
 
   constructor(

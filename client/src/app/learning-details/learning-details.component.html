@@ -2,7 +2,7 @@
   <h2 class="learning-title">Learning Article</h2>
   <div class="learning-header">
     <h3 class="learning-title">{{ learningArticle.title }}</h3>
-    <p class="learning-date">{{ trimmedDate }}</p>
+    <p class="learning-date">{{ learningArticle.date }}</p>
   </div>
   <p class="learning-body">{{ learningArticle.body }}</p>
   <p class="learning-body" *ngIf="learningArticle.body2">

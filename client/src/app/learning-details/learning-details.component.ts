@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  LearningContentObject,
-  learningContent,
-} from '../../assets/learning-contents/learning-contents';
 import { ActivatedRoute } from '@angular/router';
+import { SharedService } from '../shared.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-learning-details',
@@ -11,24 +9,25 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./learning-details.component.css'],
 })
 export class LearningDetailsComponent implements OnInit {
-  learningArticle: LearningContentObject | undefined;
-  trimmedDate: string | undefined;
+  learningArticle: any;
 
-  constructor(private route: ActivatedRoute) {
-    this.trimmedDate = '';
-  }
+  constructor(private route: ActivatedRoute, private service: SharedService) {}
 
   ngOnInit(): void {
     //retrieve article ID from params
     const routeParams = this.route.snapshot.paramMap;
-    const articleId = Number(routeParams.get('articleId'));
+    const id = Number(routeParams.get('articleId'));
 
     // find article by id
-    this.learningArticle = learningContent.find(
-      (article) => article.id === articleId
-    );
+    this.getArticleById(id);
+  }
 
-    const trimmedDate: string | undefined = this.learningArticle?.date.toDateString();
-    this.trimmedDate = trimmedDate;
+  /**
+   * Get all articles
+   */
+  private getArticleById(id: Number) {
+    this.service.getArticleById(id).subscribe((data) => {
+      this.learningArticle = data.result[0];
+    });
   }
 }

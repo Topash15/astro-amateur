@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page-body.component.css'],
 })
 export class HomePageBodyComponent implements OnInit {
-  photos: any[] = [
+  navCards: any[] = [
     {
       title: 'Portfolio',
       description: 'Take a look through all my work!',
