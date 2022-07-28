@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {portfolioContent, PortfolioItem, portfolioGroups} from '../../assets/portfolio-contents/portfolio-contents';
-import { ServerService } from '../server.service';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-portfolio-list',
@@ -9,12 +9,12 @@ import { ServerService } from '../server.service';
 })
 export class PortfolioListComponent implements OnInit {
 
-  photos: PortfolioItem[] = portfolioContent;
+  photos: any[] = portfolioContent;
   groups: string[] = portfolioGroups;
   type: string = 'portfolio';
 
   constructor(
-    private server: ServerService
+    private service: SharedService
   ) { }
 
   ngOnInit(): void {
@@ -22,9 +22,8 @@ export class PortfolioListComponent implements OnInit {
   }
 
   private getPhotos(){
-    this.server.getPhotos().then((response: any) => {
-      console.log(response)
+    this.service.getPhotos().subscribe(data => {
+      this.photos = data.results;
     })
   }
-
 }

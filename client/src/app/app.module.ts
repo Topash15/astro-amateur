@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+
+import { SharedService } from './shared.service';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,9 +40,11 @@ import { LearningDetailsComponent } from './learning-details/learning-details.co
       { path: 'about', component: AboutPageComponent},
       { path: 'learning/:articleId', component: LearningDetailsComponent}
     ]),
+    HttpClientModule
   ],
   providers: [
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    SharedService
   ],
   bootstrap: [AppComponent],
 })
