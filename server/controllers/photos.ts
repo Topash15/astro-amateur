@@ -12,7 +12,7 @@ const createPhoto = (req: Request, res: Response, next: NextFunction) => {
     camera,
     lens,
     iso,
-    aperature,
+    aperture,
     thumbnail,
     hdSource,
     source,
@@ -29,7 +29,7 @@ const createPhoto = (req: Request, res: Response, next: NextFunction) => {
     camera,
     lens,
     iso,
-    aperature,
+    aperture,
     thumbnail,
     hdSource,
     source,
@@ -44,7 +44,7 @@ const createPhoto = (req: Request, res: Response, next: NextFunction) => {
       "${camera}",
       "${lens}",
       "${iso}",
-      "${aperature}",
+      "${aperture}",
       "${thumbnail}",
       "${hdSource}",
       "${source}",
@@ -156,6 +156,76 @@ const getPhotoById = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
+/** Updates a photo */
+const updatePhotoById = (req: Request, res: Response, next: NextFunction) => {
+  console.log("Updating photo");
+
+  let id = req.params.id;
+  let {
+    title,
+    description,
+    detailedDescription,
+    camera,
+    lens,
+    iso,
+    aperture,
+    thumbnail,
+    hdSource,
+    source,
+    link,
+    date,
+    theme,
+    exposureTime,
+  } = req.body;
+
+  let query = `UPDATE photos
+    SET    
+      title = "${title}",
+      description = "${description}",
+      detailedDescription = "${detailedDescription}",
+      camera = "${camera}",
+      lens = "${lens}",
+      iso = "${iso}",
+      aperture = "${aperture}",
+      thumbnail = "${thumbnail}",
+      hdSource = "${hdSource}",
+      source = "${source}",
+      link = "${link}",
+      date = "${date}",
+      theme = "${theme}",
+      exposureTime = "${exposureTime}"
+    WHERE id = "${id}";`;
+
+  Connect()
+    .then((connection) => {
+      Query(connection, query)
+        .then((result) => {
+          return res.status(200).json({
+            result,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+
+          return res.status(500).json({
+            message: error.message,
+            error,
+          });
+        })
+        .finally(() => {
+          connection.end;
+        });
+    })
+    .catch((error) => {
+      console.log(error);
+
+      return res.status(500).json({
+        message: error.message,
+        error,
+      });
+    });
+};
+
 /** Deletes photo */
 const deletePhotoById = (req: Request, res: Response, next: NextFunction) => {
   console.log("Deleting photo");
@@ -191,6 +261,12 @@ const deletePhotoById = (req: Request, res: Response, next: NextFunction) => {
         error,
       });
     });
-}
+};
 
-export default { getAllPhotos, createPhoto, getPhotoById, deletePhotoById };
+export default {
+  getAllPhotos,
+  createPhoto,
+  getPhotoById,
+  deletePhotoById,
+  updatePhotoById,
+};

@@ -117,6 +117,47 @@ const getTaglistById = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
+/** Updates a taglist */
+const updateTaglistById = (req: Request, res: Response, next: NextFunction) => {
+  console.log("Updating taglist");
+
+  let id = req.params.id;
+  let { photo_id, tag_id } = req.body;
+
+  let query = `UPDATE taglists
+  SET photo_id = ${photo_id}, tag_id = ${tag_id}
+  WHERE taglist_id = ${id}`;
+
+  Connect()
+    .then((connection) => {
+      Query(connection, query)
+        .then((result) => {
+          return res.status(200).json({
+            result,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+
+          return res.status(500).json({
+            message: error.message,
+            error,
+          });
+        })
+        .finally(() => {
+          connection.end;
+        });
+    })
+    .catch((error) => {
+      console.log(error);
+
+      return res.status(500).json({
+        message: error.message,
+        error,
+      });
+    });
+};
+
 /** Deletes taglist */
 const deleteTaglistById = (req: Request, res: Response, next: NextFunction) => {
   console.log("Deleting taglist");
@@ -159,4 +200,5 @@ export default {
   createTaglist,
   getTaglistById,
   deleteTaglistById,
+  updateTaglistById
 };

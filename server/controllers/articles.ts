@@ -122,6 +122,50 @@ const getArticleById = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
+/** Updates a article */
+const updateArticleById = (req: Request, res: Response, next: NextFunction) => {
+  console.log("Updating article");
+
+  let id = req.params.id;
+  let { date, title, summary, body } = req.body;
+
+  let query = `UPDATE articles
+    SET date = "${date}",
+      title = "${title}",
+      summary = "${summary}",
+      body = "${body}"
+     WHERE id = "${id}"`;
+
+  Connect()
+    .then((connection) => {
+      Query(connection, query)
+        .then((result) => {
+          return res.status(200).json({
+            result,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+
+          return res.status(500).json({
+            message: error.message,
+            error,
+          });
+        })
+        .finally(() => {
+          connection.end;
+        });
+    })
+    .catch((error) => {
+      console.log(error);
+
+      return res.status(500).json({
+        message: error.message,
+        error,
+      });
+    });
+};
+
 /** Deletes article */
 const deleteArticleById = (req: Request, res: Response, next: NextFunction) => {
   console.log("Deleting article");
@@ -163,5 +207,6 @@ export default {
   getAllArticles,
   createArticle,
   getArticleById,
+  updateArticleById,
   deleteArticleById,
 };
