@@ -5,6 +5,7 @@ import photoRoutes from "./routes/photos";
 import articleRoutes from './routes/articles';
 import taglistRoutes from './routes/taglist';
 import tagRoutes from './routes/tags';
+import commentRoutes from './routes/comments';
 
 const router = express.Router();
 const app = express();
@@ -51,6 +52,7 @@ router.use("/api/portfolio", photoRoutes);
 router.use("/api/learning", articleRoutes);
 router.use("/api/taglist", taglistRoutes);
 router.use("/api/tags", tagRoutes);
+router.use("/api/comments", commentRoutes);
 
 /** Error handling */
 router.use((req, res, next) => {
