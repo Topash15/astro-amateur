@@ -1,0 +1,21 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+  padding: 2em;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.form-control{
+    margin: 1em 0;
+    height: 2em;
+    border-radius: 16px;
+    padding: 0.5em;
+}
+
+.form-textarea{
+    width: 60%;
+    height: 5em;
+}

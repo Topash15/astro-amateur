@@ -10,6 +10,7 @@ import { SharedService } from '../shared.service';
 export class PortfolioDetailsComponent implements OnInit {
   portfolioItem: any;
   sourcePrefix: string;
+  comments: any[] = [];
 
   constructor(
     private route: ActivatedRoute, 
@@ -25,6 +26,9 @@ export class PortfolioDetailsComponent implements OnInit {
 
     // finds the portfolio item based on the id
     this.getPhoto(id);
+
+    // finds all comments for this photoId and saves to comments
+    this.getComments(id);
   }
 
   /**
@@ -34,5 +38,15 @@ export class PortfolioDetailsComponent implements OnInit {
     this.service.getPhotoById(id).subscribe((data) => {
       this.portfolioItem = data.result[0];
     });
+  }
+
+  /**
+   * Retrieves all comments related to this photo id
+   */
+  private getComments(id: number){
+    this.service.getPhotoComments(id).subscribe((data) => {
+      this.comments = data.results;
+      console.log(this.comments);
+    })
   }
 }

@@ -16,6 +16,7 @@ import { PortfolioDetailsComponent } from './portfolio-details/portfolio-details
 import { LearningPageComponent } from './learning-page/learning-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { LearningDetailsComponent } from './learning-details/learning-details.component';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LearningDetailsComponent } from './learning-details/learning-details.co
     LearningPageComponent,
     AboutPageComponent,
     LearningDetailsComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,

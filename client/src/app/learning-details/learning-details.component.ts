@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class LearningDetailsComponent implements OnInit {
   learningArticle: any;
+  comments: any[] = [];
 
   constructor(private route: ActivatedRoute, private service: SharedService) {}
 
@@ -20,6 +21,9 @@ export class LearningDetailsComponent implements OnInit {
 
     // find article by id
     this.getArticleById(id);
+
+    // get comments
+    this.getArticleComments(id);
   }
 
   /**
@@ -28,6 +32,16 @@ export class LearningDetailsComponent implements OnInit {
   private getArticleById(id: Number) {
     this.service.getArticleById(id).subscribe((data) => {
       this.learningArticle = data.result[0];
+    });
+  }
+
+  /**
+   * Get all comments for this article id
+   */
+  private getArticleComments(id: number) {
+    this.service.getArticleComments(id).subscribe((data) => {
+      this.comments = data.results;
+      console.log(data.results)
     });
   }
 }

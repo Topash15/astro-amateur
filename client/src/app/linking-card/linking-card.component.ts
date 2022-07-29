@@ -9,11 +9,8 @@ export class LinkingCardComponent implements OnInit {
 
   @Input() photos: any;
   @Input() type: any;
-  linkPrefix: string;
 
-  constructor() {
-    this.linkPrefix="/products/";
-  }
+  constructor() {}
 
   ngOnInit(): void {
   }

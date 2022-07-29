@@ -1,0 +1,26 @@
+<form class="form-group">
+  <h3>Leave a comment</h3>
+  <input type="text" class="form-control" placeholder="Name" />
+  <textarea
+    class="form-control form-textarea"
+    placeholder="Put your comment here"
+  ></textarea>
+  <button class="btn-primary">Submit</button>
+</form>
+<section
+  class="comment-container container"
+  *ngIf="comments.length; else elseBlock"
+>
+  <h3>Comments</h3>
+  <ul class="comments-list">
+    <li *ngFor="let comment of comments">
+      <p class="comment-date">{{ comment.date }}</p>
+      <p class="comment-commenter">{{ comment.commenter }} says:</p>
+      <p class="comment-text">{{ comment.text }}</p>
+    </li>
+  </ul>
+</section>
+<ng-template #elseBlock>
+  <h3>Comments</h3>
+  <p>No one have commented yet. You could be the first!</p>
+</ng-template>
