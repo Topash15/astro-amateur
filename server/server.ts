@@ -1,7 +1,5 @@
 import express from "express";
 import bodyParser from "body-parser";
-import mysql from "mysql";
-import http from "http";
 import config from "./config/config";
 import photoRoutes from "./routes/photos";
 import articleRoutes from './routes/articles';

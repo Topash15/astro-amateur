@@ -21,14 +21,20 @@ const Connect = async () =>
     });
   });
 
-const Query = (connection:any, query:any) => new Promise((resolve, reject) => {
-  connection.query(query, connection, (error : any, result : any) => {
-    if(error){
-      reject(error);
-      return
-    }
-    resolve(result);
-  })
-});
+const Query = (connection: any, query: any) =>
+  new Promise((resolve, reject) => {
+    connection.query(query, connection, (error: any, result: any) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+      resolve(result);
+      connection.end((error: any) => {
+        if(error){
+          throw (error);
+        }
+      });
+    });
+  });
 
-export {Query, Connect};
+export { Query, Connect };
