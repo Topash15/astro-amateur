@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.get("/get/comments", controller.getAllComments);
 router.get("/get/comment/:id", controller.getCommentById);
-router.get("/get/comment/photo/:id", controller.getCommentsByPhotoId);
-router.get("/get/comment/article/:id", controller.getCommentsByArticleId);
+router.get("/get/comments/photo/:id", controller.getCommentsByPhotoId);
+router.get("/get/comments/article/:id", controller.getCommentsByArticleId);
 router.post("/post/comments", controller.createComment);
 router.delete("/delete/comment/:id", controller.deleteCommentById);
 router.put("/put/comment/:id", controller.updateCommentById);

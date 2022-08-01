@@ -1,14 +1,31 @@
 import express from "express";
 import bodyParser from "body-parser";
 import config from "./config/config";
+import cookieParser from "cookie-parser";
+import session from "express-session";
+
+/** Route imports */
 import photoRoutes from "./routes/photos";
-import articleRoutes from './routes/articles';
-import taglistRoutes from './routes/taglist';
-import tagRoutes from './routes/tags';
-import commentRoutes from './routes/comments';
+import articleRoutes from "./routes/articles";
+import taglistRoutes from "./routes/taglist";
+import tagRoutes from "./routes/tags";
+import commentRoutes from "./routes/comments";
+import userRoutes from "./routes/users";
 
 const router = express.Router();
 const app = express();
+
+/** Session config*/
+const secret = config.secret || "super secret secret";
+app.use(cookieParser());
+app.use(
+  session({
+    secret: secret,
+    cookie: {maxAge: 10000},
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 /** Log the request */
 router.use((req, res, next) => {
@@ -53,6 +70,7 @@ router.use("/api/learning", articleRoutes);
 router.use("/api/taglist", taglistRoutes);
 router.use("/api/tags", tagRoutes);
 router.use("/api/comments", commentRoutes);
+router.use("/api/users", userRoutes);
 
 /** Error handling */
 router.use((req, res, next) => {

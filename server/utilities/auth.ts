@@ -1,18 +1,13 @@
 import bcrypt from "bcrypt";
 
 // hashes password using bcrypt and returns hash
-const hashPassword : string = (password : string) => {
+export const hashPassword = async (password : string) => {
     const saltRounds:number = 10;
-    password = await bcrypt(password, saltRounds);
-
+    password = await bcrypt.hash(password, saltRounds);
     return password;
 }
 
-const passwordIsCorrect : boolean = (password : string) => {
-    // find user by email/id
-    // hash password and compare to input password
-    // if same return true, else false
-    // if user doesn't exist, return false
+export const passwordIsCorrect = async (password : string, passwordHash : string) => {
+    const correctPassword = await bcrypt.compare(password, passwordHash);
+    return correctPassword;
 }
-
-export default { hashPassword, passwordIsCorrect }

@@ -41,6 +41,7 @@ const SERVER = {
 const config = {
   mysql: MYSQL,
   server: SERVER,
+  secret: process.env.SECRET
 };
 
 export default config;
