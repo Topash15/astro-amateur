@@ -16,7 +16,7 @@ const router = express.Router();
 const app = express();
 
 /** Session config*/
-const secret = config.secret || "super secret secret";
+const secret : string = config.secret || "super secret secret";
 app.use(cookieParser());
 app.use(
   session({

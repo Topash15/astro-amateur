@@ -228,6 +228,13 @@ const updatePhotoById = (req: Request, res: Response, next: NextFunction) => {
 
 /** Deletes photo */
 const deletePhotoById = (req: Request, res: Response, next: NextFunction) => {
+  
+  // only users with the "mod" role are allowed to delete photos
+  if (req.session.role !== "mod") {
+    return res
+      .status(403)
+      .json({ message: "You do not have permission to delete this photo" });
+  }
   console.log("Deleting photo");
 
   let id = req.params.id;

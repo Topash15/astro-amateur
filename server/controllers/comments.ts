@@ -3,6 +3,9 @@ import { Query, Connect } from "../config/mysql";
 
 /** Creates a new comment */
 const createComment = (req: Request, res: Response, next: NextFunction) => {
+  if (!req.session.loggedIn) {
+    return res.status(401).json({ message: "You must be logged in" });
+  }
   console.log("Creating comment");
 
   let { date, photo_id, article_id, text, commenter } = req.body;
@@ -103,7 +106,11 @@ const getAllComments = (req: Request, res: Response, next: NextFunction) => {
 };
 
 /** Returns comments based on a photo ID provided in params */
-const getCommentsByPhotoId = (req: Request, res: Response, next: NextFunction) => {
+const getCommentsByPhotoId = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   console.log("Finding comments");
 
   let id = req.params.id;
@@ -140,7 +147,11 @@ const getCommentsByPhotoId = (req: Request, res: Response, next: NextFunction) =
 };
 
 /** Returns comments based on an article ID provided in params */
-const getCommentsByArticleId = (req: Request, res: Response, next: NextFunction) => {
+const getCommentsByArticleId = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   console.log("Finding comments");
 
   let id = req.params.id;
@@ -217,13 +228,17 @@ const updateCommentById = (req: Request, res: Response, next: NextFunction) => {
   console.log("Updating comment");
 
   let id = req.params.id;
-  let { date, title, summary, body } = req.body;
+  let { date, title, summary, body, commenter } = req.body;
+  if(!req.session.loggedIn && req.session.username !== commenter){
+    return res.status(401).json({message: 'Not authorized to edit this comment.'})
+  }
 
   let query = `UPDATE comments
     SET date = "${date}",
       title = "${title}",
       summary = "${summary}",
-      body = "${body}"
+      body = "${body}",
+      commenter = "${commenter}",
      WHERE id = "${id}"`;
 
   Connect()
@@ -258,6 +273,9 @@ const updateCommentById = (req: Request, res: Response, next: NextFunction) => {
 
 /** Deletes comment */
 const deleteCommentById = (req: Request, res: Response, next: NextFunction) => {
+  if(!req.session.loggedIn || req.session.role !== 'mod'){
+    return res.status(403).json({message: 'You do not have permission to delete this comment'});
+  }
   console.log("Deleting comment");
 
   let id = req.params.id;
@@ -300,5 +318,5 @@ export default {
   updateCommentById,
   deleteCommentById,
   getCommentsByArticleId,
-  getCommentsByPhotoId
+  getCommentsByPhotoId,
 };

@@ -168,6 +168,11 @@ const updateArticleById = (req: Request, res: Response, next: NextFunction) => {
 
 /** Deletes article */
 const deleteArticleById = (req: Request, res: Response, next: NextFunction) => {
+  
+  // only users with the "mod" role are allowed to delete articles
+  if(req.session.role !== 'mod'){
+    return res.status(403).json({message: 'You do not have permission to delete this article'});
+  }
   console.log("Deleting article");
 
   let id = req.params.id;

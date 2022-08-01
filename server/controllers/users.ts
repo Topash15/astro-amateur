@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { Query, Connect } from "../config/mysql";
-import { hashPassword, passwordIsCorrect } from "../utilities/auth";
+import { hashPassword } from "../utilities/auth";
 import bcrypt from "bcrypt";
 
 // create user
@@ -118,7 +118,7 @@ const getUserByEmail = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-// get user by email
+// logs user in
 const login = (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
 
@@ -139,6 +139,7 @@ const login = (req: Request, res: Response, next: NextFunction) => {
           if (correctPassword) {
             req.session.user_id = results[0].user_id;
             req.session.username = results[0].username;
+            req.session.role = results[0].role;
             req.session.loggedIn = true;
             return res.status(200).json({ message: "Signed in" });
           } else {
@@ -169,12 +170,14 @@ const login = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
+// logs out user
 const logout = (req: Request, res: Response, next: NextFunction) => {
   Connect()
     .then((connection) => {
       if(req.session.loggedIn) {
         req.session.user_id = undefined;
         req.session.username = undefined;
+        req.session.role = undefined;
         req.session.loggedIn = false;
         return res.status(200).json({message: "Logged out"})
       }
