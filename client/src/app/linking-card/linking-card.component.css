@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: 33% 33% 33%;
   justify-content: center;
+  align-items: center;
 }
 
 .linking-card {
@@ -14,7 +15,10 @@
 }
 
 .photo-container {
-  position: relative;
+  width: 100%;
+  height: 75%;
+  background-color: rgb(4, 0, 0);
+  border-radius:16px;
 }
 
 .photo-container:hover{
@@ -23,20 +27,28 @@
 
 .photo-title {
   color: var(--text);
-  width: 100%;
+  padding: 0.5em;
+  min-width:90%;
+  max-width: 100%;
   text-decoration: none;
   text-align: center;
   margin: 0;
-  position: absolute;
-  bottom: 0;
+  position: relative;
+  bottom: 20%;
   border-radius: 0 0 16px 16px;
-  font-size: 1.5vw;
+  font-size: 1em;
   background-color: rgba(0, 0, 0);
 }
 
 .photo-img {
-  max-width: 100%;
+  width: 100%;
+  height: 90%;
   border-radius: 16px;
+  overflow: hidden;
+}
+
+.text-container{
+  height: auto;
 }
 
 @media (max-width: 769px) {
@@ -56,5 +68,6 @@
 
   .photo-title{
     font-size:6vw;
+    bottom: 15%;
   }
 }

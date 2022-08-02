@@ -12,12 +12,9 @@ export class PortfolioDetailsComponent implements OnInit {
   portfolioItem: any;
   sourcePrefix: string;
   comments: any[] = [];
-  type: string = 'photo'
+  type: string = 'photo';
 
-  constructor(
-    private route: ActivatedRoute, 
-    private service: SharedService
-    ) {
+  constructor(private route: ActivatedRoute, private service: SharedService) {
     this.sourcePrefix = '../../assets/portfolio-contents/';
   }
 
@@ -45,15 +42,15 @@ export class PortfolioDetailsComponent implements OnInit {
   /**
    * Retrieves all comments related to this photo id
    */
-  private getComments(id: number){
+  private getComments(id: number) {
     this.service.getPhotoComments(id).subscribe((data) => {
       this.comments = data.results;
+
+      // loop through comments and edit the date format for use in comment component
       for (let i = 0; i < this.comments.length; i++) {
         let comment = this.comments[i];
-        console.log(comment);
         comment.date = convertDate(comment.date);
       }
-      console.log(this.comments);
-    })
+    });
   }
 }
