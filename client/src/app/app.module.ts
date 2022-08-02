@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { SharedService } from './shared.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,6 +19,7 @@ import { LearningPageComponent } from './learning-page/learning-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { LearningDetailsComponent } from './learning-details/learning-details.component';
 import { CommentsComponent } from './comments/comments.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,7 @@ import { CommentsComponent } from './comments/comments.component';
     AboutPageComponent,
     LearningDetailsComponent,
     CommentsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,9 @@ import { CommentsComponent } from './comments/comments.component';
       { path: 'about', component: AboutPageComponent},
       { path: 'learning/:articleId', component: LearningDetailsComponent}
     ]),
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    FormsModule
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

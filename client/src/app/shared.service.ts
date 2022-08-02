@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
+import { Comment } from './comments/comment';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +37,17 @@ export class SharedService {
   getPhotoComments(id: number): Observable<any> {
     return this.http.get<any>(
       `${environment.serverURL}/api/comments/get/comments/photo/${id}`
+    );
+  }
+
+  /**
+   * Creates new comment on photo
+   */
+  createPhotoComment(form: Comment): Observable<any> {
+    console.log("creating new comment")
+    console.log(JSON.stringify(form))
+    return this.http.post<any>(
+      `${environment.serverURL}/api/comments/post/comments`, JSON.stringify(form), {headers: {'Content-Type': 'application/json'}}
     );
   }
 

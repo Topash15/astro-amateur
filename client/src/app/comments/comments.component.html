@@ -1,12 +1,36 @@
-<form class="form-group">
-  <h3>Leave a comment</h3>
-  <input type="text" class="form-control" placeholder="Name" />
-  <textarea
-    class="form-control form-textarea"
-    placeholder="Put your comment here"
-  ></textarea>
-  <button class="btn-primary">Submit</button>
+<form class="form-group" (ngSubmit)="onSubmit()" #commentForm="ngForm">
+  <div>
+    <h3>Leave a comment</h3>
+    {{model | json}}
+    <div [hidden]="submitted" class="form-group">
+      <label for="commenter">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="commenter"
+        required
+        name="commenter"
+        [(ngModel)] = 'model.commenter'
+        (ngModelChange)="model.commenter = $event"
+      />
+    </div>
+
+    <textarea
+      class="form-control form-textarea"
+      id="comment-text"
+      required
+      name="comment"
+      [(ngModel)] = 'model.text'
+      (ngModelChange)="model.text = $event"
+    ></textarea>
+    <button class="btn-primary">Submit</button>
+  </div>
 </form>
+<div class="comment-preview">
+  <p class="comment-date">{{ model.date }}</p>
+  <p class="comment-commenter">{{ model.commenter }} says:</p>
+  <p class="comment-text">{{ model.text }}</p>
+</div>
 <section
   class="comment-container container"
   *ngIf="comments.length; else elseBlock"

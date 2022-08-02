@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from '../shared.service';
+import { convertDate } from '../utilites/helper';
 
 @Component({
   selector: 'app-portfolio-details',
@@ -11,6 +12,7 @@ export class PortfolioDetailsComponent implements OnInit {
   portfolioItem: any;
   sourcePrefix: string;
   comments: any[] = [];
+  type: string = 'photo'
 
   constructor(
     private route: ActivatedRoute, 
@@ -46,6 +48,11 @@ export class PortfolioDetailsComponent implements OnInit {
   private getComments(id: number){
     this.service.getPhotoComments(id).subscribe((data) => {
       this.comments = data.results;
+      for (let i = 0; i < this.comments.length; i++) {
+        let comment = this.comments[i];
+        console.log(comment);
+        comment.date = convertDate(comment.date);
+      }
       console.log(this.comments);
     })
   }
