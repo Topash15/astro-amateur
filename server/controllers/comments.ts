@@ -3,9 +3,10 @@ import { Query, Connect } from "../config/mysql";
 
 /** Creates a new comment */
 const createComment = (req: Request, res: Response, next: NextFunction) => {
-  if (!req.session.loggedIn) {
-    return res.status(401).json({ message: "You must be logged in" });
-  }
+  /**Uncomment once user profiles are in use */
+  // if (!req.session.loggedIn) {
+  //   return res.status(401).json({ message: "You must be logged in" });
+  // }
   console.log("Creating comment");
 
   let { date, photo_id, article_id, text, commenter } = req.body;
@@ -105,7 +106,7 @@ const getAllComments = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-/** Returns comments based on a photo ID provided in params */
+/** Returns comments in descending order by date based on a photo ID provided in params */
 const getCommentsByPhotoId = (
   req: Request,
   res: Response,
@@ -114,7 +115,7 @@ const getCommentsByPhotoId = (
   console.log("Finding comments");
 
   let id = req.params.id;
-  let query = `SELECT * FROM comments WHERE photo_id = ${id}`;
+  let query = `SELECT * FROM comments WHERE photo_id = ${id} ORDER BY date DESC`;
 
   Connect()
     .then((connection) => {
@@ -146,7 +147,7 @@ const getCommentsByPhotoId = (
     });
 };
 
-/** Returns comments based on an article ID provided in params */
+/** Returns comments in descending order by date based on an article ID provided in params */
 const getCommentsByArticleId = (
   req: Request,
   res: Response,
@@ -155,7 +156,7 @@ const getCommentsByArticleId = (
   console.log("Finding comments");
 
   let id = req.params.id;
-  let query = `SELECT * FROM comments WHERE article_id = ${id}`;
+  let query = `SELECT * FROM comments WHERE article_id = ${id} ORDER BY date DESC`;
 
   Connect()
     .then((connection) => {

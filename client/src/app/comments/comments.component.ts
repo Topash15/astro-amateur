@@ -32,13 +32,15 @@ export class CommentsComponent implements OnInit {
    * Submits create comment form
    */
   onSubmit(): void {
-    this.service.createPhotoComment(this.model).subscribe((comment) => {
-      console.log(comment);
-    });
-    this.comments.unshift(this.model);
-    this.setType(this.type);
-    console.log(this.model);
-    this.submitted = true;
+    if (this.model.commenter && this.model.text) {
+      this.service.createPhotoComment(this.model).subscribe();
+
+      
+      this.comments.unshift(this.model);
+      this.setType(this.type);
+      console.log(this.model);
+      this.submitted = true;
+    }
   }
 
   /**

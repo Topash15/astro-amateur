@@ -1,0 +1,57 @@
+{
+  "name": "astro-amateur",
+  "version": "1.0.0",
+  "description": "This application is built to perform two tasks: display a portfolio of my astrophotography and act as a resource for others. It achieves being a resource through the blog portion of the website.",
+  "main": "index.js",
+  "dependencies": {
+    "abbrev": "^1.1.1",
+    "anymatch": "^3.1.2",
+    "chokidar": "^3.5.3",
+    "balanced-match": "^1.0.2",
+    "debug": "^3.2.7",
+    "fill-range": "^7.0.1",
+    "brace-expansion": "^1.1.11",
+    "concat-map": "^0.0.1",
+    "has-flag": "^3.0.0",
+    "braces": "^3.0.2",
+    "glob-parent": "^5.1.2",
+    "is-extglob": "^2.1.1",
+    "binary-extensions": "^2.2.0",
+    "is-binary-path": "^2.1.0",
+    "is-glob": "^4.0.3",
+    "minimatch": "^3.1.2",
+    "is-number": "^7.0.0",
+    "ms": "^2.1.3",
+    "ignore-by-default": "^1.0.1",
+    "pstree.remy": "^1.1.8",
+    "nodemon": "^2.0.19",
+    "nopt": "^1.0.10",
+    "normalize-path": "^3.0.0",
+    "touch": "^3.1.0",
+    "picomatch": "^2.3.1",
+    "semver": "^5.7.1",
+    "simple-update-notifier": "^1.0.7",
+    "supports-color": "^5.5.0",
+    "typescript": "^4.7.4",
+    "readdirp": "^3.6.0",
+    "undefsafe": "^2.0.5",
+    "to-regex-range": "^5.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "npx ts-node -T server/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --exec npx ts-node -T ./server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Topash15/astro-amateur.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Topash15/astro-amateur/issues"
+  },
+  "homepage": "https://github.com/Topash15/astro-amateur#readme"
+}

@@ -80,3 +80,7 @@ a:hover {
   opacity: 0.5;
   cursor: pointer;
 }
+
+.center{
+  margin: 0 auto;
+}
