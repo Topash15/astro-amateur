@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  serverURL: 'https://astro-amateur-server.herokuapp.com'
 };
