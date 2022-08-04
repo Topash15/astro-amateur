@@ -1,0 +1,22 @@
+<section class="card-container container" *ngIf="photos.length; else elseBlock">
+  <div class="linking-card" *ngFor="let photo of photos">
+    <a
+      *ngIf="type === 'portfolio'"
+      class="photo-container"
+      [routerLink]="['/portfolio', photo.id]"
+    >
+      <img class="photo-img" [src]="photo.thumbnail" [alt]="photo.title" />
+      <h3 class="photo-title">{{ photo.title }}</h3>
+    </a>
+    <a *ngIf="type === 'home'" class="photo-container" [href]="photo.link">
+      <img class="photo-img" [src]="photo.thumbnail" [alt]="photo.title" />
+      <h3 class="photo-title">{{ photo.title }}</h3>
+    </a>
+    <div class="text-container">
+      <p class="description">{{ photo.description }}</p>
+    </div>
+  </div>
+</section>
+<ng-template #elseBlock>
+  <p>No photos to show!</p>
+</ng-template>

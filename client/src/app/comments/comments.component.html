@@ -1,0 +1,56 @@
+<section class="comment-section">
+  <form class="form-group" (ngSubmit)="onSubmit()" #commentForm="ngForm">
+    <div class="form-container">
+      <h3>Leave a comment</h3>
+      <div class="input-container">
+        <label for="commenter">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="commenter"
+          required
+          name="commenter"
+          [(ngModel)]="model.commenter"
+          (ngModelChange)="model.commenter = $event"
+        />
+      </div>
+      <div class="input-container">
+        <label for="comment">Comment</label>
+        <textarea
+          class="form-control form-textarea"
+          id="comment-text"
+          required
+          name="comment"
+          [(ngModel)]="model.text"
+          (ngModelChange)="model.text = $event"
+        ></textarea>
+      </div>
+      <button class="btn-primary center">Submit</button>
+    </div>
+  </form>
+  <section class="comment-preview">
+    <h3 class="preview-title title">Comment Preview</h3>
+    <div class="preview-container">
+      <p class="comment-date">{{ model.date }}</p>
+      <p class="comment-commenter">{{ model.commenter || "Author" }} said: </p>
+      <p class="comment-text">{{ model.text || "Comment" }}</p>
+    </div>
+  </section>
+  <section
+    class="comment-container container"
+    *ngIf="comments.length; else elseBlock"
+  >
+    <h3>Comments</h3>
+    <ul class="comments-list">
+      <li *ngFor="let comment of comments">
+        <p class="comment-date">{{ comment.date }}</p>
+        <p class="comment-commenter">{{ comment.commenter }} says:</p>
+        <p class="comment-text">{{ comment.text }}</p>
+      </li>
+    </ul>
+  </section>
+  <ng-template #elseBlock>
+    <h3>Comments</h3>
+    <p>No one have commented yet. You could be the first!</p>
+  </ng-template>
+</section>
