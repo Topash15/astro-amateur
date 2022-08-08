@@ -1,4 +1,4 @@
-<section class="card-container container" *ngIf="photos.length; else elseBlock">
+<section class="card-container container" *ngIf="photos.length && loading===false; else elseBlock">
   <div class="linking-card" *ngFor="let photo of photos">
     <a
       *ngIf="type === 'portfolio'"

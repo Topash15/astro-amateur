@@ -1,5 +1,12 @@
 <section class="portfolio-container container">
   <h2 class="portfolio-section-title">Photos</h2>
-  <app-linking-card [photos]="photos" [type]="type"></app-linking-card>
+  <div *ngIf="loading">
+    <p class="loading-text">
+      Photos are loading. We use free servers that take a minute to start up.
+      Please be patient. Thank you!
+    </p>
+  </div>
+  <app-error-card *ngIf="error" [error]="error" class="error-card">
+  </app-error-card>
+  <app-linking-card [photos]="photos" [type]="type" [loading]="loading"></app-linking-card>
 </section>
-

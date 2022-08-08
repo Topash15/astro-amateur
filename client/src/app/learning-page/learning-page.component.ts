@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class LearningPageComponent implements OnInit {
   articles: any[] = [];
+  error: any;
+  loading: boolean = false;
 
   constructor(private service: SharedService) {}
 
@@ -20,8 +22,16 @@ export class LearningPageComponent implements OnInit {
    * Get all articles
    */
   private getArticles() {
-    this.service
-      .getArticles()
-      .subscribe((data) => (this.articles = data.results));
+    this.loading = true;
+    this.service.getArticles().subscribe({
+      next: (data) => (this.articles = data.results),
+      error: (err) => {
+        this.loading = false;
+        this.error = err;
+      },
+      complete: () => {
+        this.loading = false;
+      },
+    });
   }
 }
