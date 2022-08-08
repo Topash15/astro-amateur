@@ -17,27 +17,26 @@
 .photo-container {
   width: 100%;
   height: 75%;
-  background-color: rgb(4, 0, 0);
-  border-radius:16px;
+  border-radius: 16px;
+  position: relative;
 }
 
-.photo-container:hover{
-    opacity: 0.8;
+.photo-container:hover > .photo-title {
+  opacity: 0;
 }
 
 .photo-title {
   color: var(--text);
-  padding: 0.5em;
-  min-width:90%;
-  max-width: 100%;
+  padding: 0.5em 0;
+  width: 100%;
   text-decoration: none;
   text-align: center;
   margin: 0;
-  position: relative;
-  bottom: 20%;
+  position: absolute;
   border-radius: 0 0 16px 16px;
   font-size: 1em;
   background-color: rgba(0, 0, 0);
+  bottom: 0;
 }
 
 .photo-img {
@@ -47,27 +46,27 @@
   overflow: hidden;
 }
 
-.text-container{
+.text-container {
   height: auto;
 }
 
 @media (max-width: 769px) {
-  .card-container{
+  .card-container {
     grid-template-columns: 50% 50%;
   }
 
-  .photo-title{
-    font-size:3vw;
+  .photo-title {
+    font-size: 3vw;
   }
 }
 
 @media (max-width: 426px) {
-  .card-container{
+  .card-container {
     grid-template-columns: 100%;
   }
 
-  .photo-title{
-    font-size:6vw;
-    bottom: 15%;
+  .photo-title {
+    font-size: 6vw;
+    bottom: 0;
   }
 }
