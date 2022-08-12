@@ -12,6 +12,7 @@ import { convertDate } from '../utilites/helper';
 export class CommentsComponent implements OnInit {
   @Input() comments: Comment[] = [];
   @Input() type: any;
+  @Input() loading: boolean = false;
 
   submitted: boolean = false;
 
@@ -26,6 +27,7 @@ export class CommentsComponent implements OnInit {
   ngOnInit() {
     this.setType(this.type);
     this.model.date = convertDate(new Date(Date.now()).toJSON());
+    this.formatDate();
   }
 
   /**
@@ -35,7 +37,6 @@ export class CommentsComponent implements OnInit {
     if (this.model.commenter && this.model.text) {
       this.service.createPhotoComment(this.model).subscribe();
 
-      
       this.comments.unshift(this.model);
       this.setType(this.type);
       console.log(this.model);
@@ -59,6 +60,16 @@ export class CommentsComponent implements OnInit {
       const routeParams = this.route.snapshot.paramMap;
       const id: number = Number(routeParams.get('articleId'));
       this.model = new Comment('', '', '', undefined, id);
+    }
+  }
+
+  /**
+   * Edits date format to yyyy-mm-dd
+   */
+  formatDate(): void {
+    for (let i = 0; i < this.comments.length; i++) {
+      let comment = this.comments[i];
+      comment.date = convertDate(comment.date);
     }
   }
 }

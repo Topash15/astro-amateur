@@ -13,6 +13,9 @@ export class LearningDetailsComponent implements OnInit {
   learningArticle: any;
   comments: any[] = [];
   type: string = 'article';
+  loading: boolean = false;
+  error: any = undefined;
+  commentsLoading: boolean = false;
 
   constructor(private route: ActivatedRoute, private service: SharedService) {}
 
@@ -32,9 +35,19 @@ export class LearningDetailsComponent implements OnInit {
    * Get all articles
    */
   private getArticleById(id: Number) {
-    this.service.getArticleById(id).subscribe((data) => {
-      this.learningArticle = data.result[0];
-      this.learningArticle.date = convertDate(this.learningArticle.date);
+    this.loading = true;
+    this.service.getArticleById(id).subscribe({
+      next: (data) => {
+        this.learningArticle = data.result[0];
+        this.learningArticle.date = convertDate(this.learningArticle.date);
+      },
+      error: (err) => {
+        this.loading = false;
+        this.error = err;
+      },
+      complete: () => {
+        this.loading = false;
+      },
     });
   }
 
@@ -42,14 +55,18 @@ export class LearningDetailsComponent implements OnInit {
    * Get all comments for this article id
    */
   private getArticleComments(id: number) {
-    this.service.getArticleComments(id).subscribe((data) => {
-      this.comments = data.results;
-
-      // loop through comments and edit the date format for use in comment component
-      for (let i = 0; i < this.comments.length; i++) {
-        let comment = this.comments[i];
-        comment.date = convertDate(comment.date);
-      }
+    this.service.getArticleComments(id).subscribe({
+      next: (data) => {
+        console.log(this.comments);
+        this.comments = data.comments;
+      },
+      error: (err) => {
+        this.commentsLoading = false;
+        this.error = err;
+      },
+      complete: () => {
+        this.commentsLoading = false;
+      },
     });
   }
 }

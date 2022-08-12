@@ -1,3 +1,4 @@
+<app-loading [loading]="loading"></app-loading>
 <section class="learning-container container" *ngIf="learningArticle">
   <h2 class="learning-title">Learning Article</h2>
   <div class="learning-header">
@@ -45,5 +46,9 @@
       </li>
     </ul>
   </div>
-  <app-comments [comments]="comments" [type]="type"></app-comments>
+  <app-comments
+    [comments]="comments"
+    [type]="type"
+    [loading]="commentsLoading"
+  ></app-comments>
 </section>

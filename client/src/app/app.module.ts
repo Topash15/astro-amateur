@@ -21,6 +21,7 @@ import { LearningDetailsComponent } from './learning-details/learning-details.co
 import { CommentsComponent } from './comments/comments.component';
 import { LoginComponent } from './login/login.component';
 import { ErrorCardComponent } from './error-card/error-card.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ErrorCardComponent } from './error-card/error-card.component';
     CommentsComponent,
     LoginComponent,
     ErrorCardComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

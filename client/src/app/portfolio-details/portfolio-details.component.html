@@ -1,5 +1,6 @@
 <section class="port-details-section">
   <a class="back-link" href="#/portfolio">Back</a>
+  <app-loading [loading]="loading"></app-loading>
   <div class="container" *ngIf="portfolioItem">
     <img class="port-img" [src]="sourcePrefix + portfolioItem.source" />
     <div class="port-text-container">
@@ -33,5 +34,10 @@
       </table>
     </div>
   </div>
-  <app-comments [comments]="comments" [type]="type"></app-comments>
+  <app-error-card [error]="error"></app-error-card>
+  <app-comments
+    [comments]="comments"
+    [type]="type"
+    [loading]="commentsLoading"
+  ></app-comments>
 </section>

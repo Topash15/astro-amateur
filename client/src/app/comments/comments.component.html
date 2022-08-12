@@ -32,15 +32,15 @@
     <h3 class="preview-title title">Comment Preview</h3>
     <div class="preview-container">
       <p class="comment-date">{{ model.date }}</p>
-      <p class="comment-commenter">{{ model.commenter || "Author" }} said: </p>
+      <p class="comment-commenter">{{ model.commenter || "Author" }} said:</p>
       <p class="comment-text">{{ model.text || "Comment" }}</p>
     </div>
   </section>
   <section
     class="comment-container container"
-    *ngIf="comments.length; else elseBlock"
+    *ngIf="comments && comments.length; else elseBlock"
   >
-    <h3>Comments</h3>
+    <h3>Comments :</h3>
     <ul class="comments-list">
       <li *ngFor="let comment of comments">
         <p class="comment-date">{{ comment.date }}</p>
@@ -50,7 +50,10 @@
     </ul>
   </section>
   <ng-template #elseBlock>
-    <h3>Comments</h3>
-    <p>No one have commented yet. You could be the first!</p>
+    <h3>Comments :</h3>
+    <div>
+      <app-loading [loading]="loading"></app-loading>
+      <p>No one have commented yet. You could be the first!</p>
+    </div>
   </ng-template>
 </section>

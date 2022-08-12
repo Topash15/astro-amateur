@@ -1,11 +1,6 @@
 <section class="learning-container container">
   <h2>Learning Articles</h2>
-  <div *ngIf="loading">
-    <p class="loading-text">
-      Photos are loading. We use free servers that take a minute to start up.
-      Please be patient. Thank you!
-    </p>
-  </div>
+  <app-loading [loading]="loading"></app-loading>
   <div
     class="learning-articles-container"
     *ngIf="articles.length; else elseBlock"
