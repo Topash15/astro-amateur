@@ -9,6 +9,7 @@ export class LinkingCardComponent implements OnInit {
 
   @Input() photos: any;
   @Input() type: any;
+  @Input() loading: any;
 
   constructor() {}
 

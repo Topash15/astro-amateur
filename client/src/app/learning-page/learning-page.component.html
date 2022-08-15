@@ -1,12 +1,27 @@
 <section class="learning-container container">
-    <h2>Learning Articles</h2>
+  <h2>Learning Articles</h2>
+  <app-loading [loading]="loading"></app-loading>
+  <div
+    class="learning-articles-container"
+    *ngIf="articles.length; else elseBlock"
+  >
     <ul class="learning-list" *ngFor="let article of articles">
-        <li class="learning-list-item">
-            <div>
-                <h3 class="learning-item-title">{{article.title}}</h3>
-                <p class="learning-item-summary">{{article.summary}}</p>
-                <a class="learning-item-link inline-link" [routerLink]="['/learning',article.id]">Click here to open article.</a>
-            </div>
-        </li>
+      <li class="learning-list-item">
+        <div>
+          <h3 class="learning-item-title">{{ article.title }}</h3>
+          <p class="learning-item-summary">{{ article.summary }}</p>
+          <a
+            class="learning-item-link inline-link"
+            [routerLink]="['/learning', article.id]"
+            >Click here to open article.</a
+          >
+        </div>
+      </li>
     </ul>
+  </div>
+  <app-error-card *ngIf="error" [error]="error" class="error-card">
+  </app-error-card>
+  <ng-template #elseBlock>
+    <p>No articles to show.</p>
+  </ng-template>
 </section>

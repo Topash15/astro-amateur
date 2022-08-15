@@ -20,6 +20,8 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { LearningDetailsComponent } from './learning-details/learning-details.component';
 import { CommentsComponent } from './comments/comments.component';
 import { LoginComponent } from './login/login.component';
+import { ErrorCardComponent } from './error-card/error-card.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { LoginComponent } from './login/login.component';
     LearningDetailsComponent,
     CommentsComponent,
     LoginComponent,
+    ErrorCardComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

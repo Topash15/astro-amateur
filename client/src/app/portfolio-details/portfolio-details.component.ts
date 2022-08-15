@@ -13,6 +13,9 @@ export class PortfolioDetailsComponent implements OnInit {
   sourcePrefix: string;
   comments: any[] = [];
   type: string = 'photo';
+  loading: boolean = false;
+  error: any = undefined;
+  commentsLoading: boolean = false;
 
   constructor(private route: ActivatedRoute, private service: SharedService) {
     this.sourcePrefix = '../../assets/portfolio-contents/';
@@ -34,8 +37,18 @@ export class PortfolioDetailsComponent implements OnInit {
    * Retreives photo by id provided in the route params
    */
   private getPhoto(id: Number) {
-    this.service.getPhotoById(id).subscribe((data) => {
-      this.portfolioItem = data.result[0];
+    this.loading = true;
+    this.service.getPhotoById(id).subscribe({
+      next: (data) => {
+        this.portfolioItem = data.result[0];
+      },
+      error: (err) => {
+        this.loading = false;
+        this.error = err;
+      },
+      complete: () => {
+        this.loading = false;
+      },
     });
   }
 
@@ -43,14 +56,19 @@ export class PortfolioDetailsComponent implements OnInit {
    * Retrieves all comments related to this photo id
    */
   private getComments(id: number) {
-    this.service.getPhotoComments(id).subscribe((data) => {
-      this.comments = data.results;
-
-      // loop through comments and edit the date format for use in comment component
-      for (let i = 0; i < this.comments.length; i++) {
-        let comment = this.comments[i];
-        comment.date = convertDate(comment.date);
-      }
+    this.commentsLoading = true;
+    this.service.getPhotoComments(id).subscribe({
+      next: (data) => {
+        console.log(this.comments);
+        this.comments = data.comments;
+      },
+      error: (err) => {
+        this.commentsLoading = false;
+        this.error = err;
+      },
+      complete: () => {
+        this.commentsLoading = false;
+      },
     });
   }
 }

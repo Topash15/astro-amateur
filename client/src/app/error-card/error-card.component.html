@@ -1,0 +1,18 @@
+<div *ngIf="error" class="error-card-background">
+  <div class="error-card">
+    <button class="btn btn-primary close" (click)="close()">X</button>
+    <p class="error-status">
+      <span class="error-label">Error Code:</span> {{ error.status }}
+    </p>
+    <p class="error-status-text">
+      <span class="error-label">Error Status:</span> {{ error.statusText }}
+    </p>
+    <p class="error-text">
+      An error has occurred. Check your connection and try again later.
+    </p>
+    <div class="button-div">
+      <button class="btn-primary refresh" (click)="refresh()">Refresh</button>
+      <button class="btn-primary back" (click)="back()">Go Back</button>
+    </div>
+  </div>
+</div>

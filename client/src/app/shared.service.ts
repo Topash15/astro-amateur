@@ -45,7 +45,9 @@ export class SharedService {
    */
   createPhotoComment(form: Comment): Observable<any> {
     return this.http.post<any>(
-      `${environment.serverURL}/api/comments/post/comments`, JSON.stringify(form), {headers: {'Content-Type': 'application/json'}}
+      `${environment.serverURL}/api/comments/post/comments`,
+      JSON.stringify(form),
+      { headers: { 'Content-Type': 'application/json' } }
     );
   }
 
@@ -79,12 +81,14 @@ export class SharedService {
     );
   }
 
-   /**
+  /**
    * Creates new comment on article
    */
-    createArticleComment(form: Comment): Observable<any> {
-      return this.http.post<any>(
-        `${environment.serverURL}/api/comments/post/comments`, JSON.stringify(form), {headers: {'Content-Type': 'application/json'}}
-      );
-    }
+  createArticleComment(form: Comment): Observable<any> {
+    return this.http.post<any>(
+      `${environment.serverURL}/api/comments/post/comments`,
+      JSON.stringify(form),
+      { headers: { 'Content-Type': 'application/json' } }
+    );
+  }
 }

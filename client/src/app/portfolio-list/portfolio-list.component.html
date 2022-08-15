@@ -1,5 +1,7 @@
 <section class="portfolio-container container">
   <h2 class="portfolio-section-title">Photos</h2>
-  <app-linking-card [photos]="photos" [type]="type"></app-linking-card>
+  <app-loading [loading]="loading"></app-loading>
+  <app-error-card *ngIf="error" [error]="error" class="error-card">
+  </app-error-card>
+  <app-linking-card [photos]="photos" [type]="type" [loading]="loading"></app-linking-card>
 </section>
-
