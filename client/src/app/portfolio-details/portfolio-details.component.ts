@@ -16,6 +16,7 @@ export class PortfolioDetailsComponent implements OnInit {
   loading: boolean = false;
   error: any = undefined;
   commentsLoading: boolean = false;
+  HDviewer: boolean = false;
 
   constructor(private route: ActivatedRoute, private service: SharedService) {
     this.sourcePrefix = '../../assets/portfolio-contents/';
@@ -70,5 +71,12 @@ export class PortfolioDetailsComponent implements OnInit {
         this.commentsLoading = false;
       },
     });
+  }
+
+  /**
+   * Toggles the HD photo viewer
+   */
+  public setHDviewer(state: boolean):void {
+    this.HDviewer = state;
   }
 }

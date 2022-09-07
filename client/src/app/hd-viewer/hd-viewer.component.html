@@ -1,0 +1,10 @@
+<section class="hd-viewer-container">
+  <div>
+    <img
+      [src]="sourcePrefix + portfolioItem.hdSource"
+      [alt]="portfolioItem.title"
+    />
+    <p class="title">{{ portfolioItem.title }}</p>
+    <button class="close-btn" (click)="hideViewer()">X</button>
+  </div>
+</section>

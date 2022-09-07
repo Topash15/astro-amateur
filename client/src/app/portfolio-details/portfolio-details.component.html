@@ -2,7 +2,19 @@
   <a class="back-link" href="#/portfolio">Back</a>
   <app-loading [loading]="loading"></app-loading>
   <div class="container" *ngIf="portfolioItem">
-    <img class="port-img" [src]="sourcePrefix + portfolioItem.source" />
+    <app-hd-viewer
+      [portfolioItem]="portfolioItem"
+      [sourcePrefix]="sourcePrefix"
+      *ngIf="HDviewer"
+      (viewerIsHidden)="setHDviewer($event)"
+    ></app-hd-viewer>
+    <button class="view-hd-btn" (click)="setHDviewer(true)">
+      <img
+        class="port-img"
+        [src]="sourcePrefix + portfolioItem.source"
+        [alt]="portfolioItem.title"
+      />
+    </button>
     <div class="port-text-container">
       <h2 class="port-title">{{ portfolioItem.title }}</h2>
       <p class="port-date">{{ portfolioItem.date }}</p>

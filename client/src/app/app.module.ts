@@ -22,6 +22,7 @@ import { CommentsComponent } from './comments/comments.component';
 import { LoginComponent } from './login/login.component';
 import { ErrorCardComponent } from './error-card/error-card.component';
 import { LoadingComponent } from './loading/loading.component';
+import { HdViewerComponent } from './hd-viewer/hd-viewer.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { LoadingComponent } from './loading/loading.component';
     CommentsComponent,
     LoginComponent,
     ErrorCardComponent,
-    LoadingComponent
+    LoadingComponent,
+    HdViewerComponent
   ],
   imports: [
     BrowserModule,

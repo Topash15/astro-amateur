@@ -2,6 +2,12 @@
     margin: var(--section-margin) 0;
 }
 
+.view-hd-btn{
+    cursor: pointer;
+    border: none;
+    border-radius: 16px;
+}
+
 .port-img{
     max-width: 100%;
     border-radius: 16px;
