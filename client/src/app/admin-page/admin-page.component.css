@@ -1,0 +1,9 @@
+textarea{
+    height:6rem;
+}
+
+.form-group{
+    margin-top: 1rem;
+    display: grid;
+    gap: .5em;
+}

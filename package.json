@@ -4,6 +4,7 @@
   "description": "This application is built to perform two tasks: display a portfolio of my astrophotography and act as a resource for others. It achieves being a resource through the blog portion of the website.",
   "main": "index.js",
   "dependencies": {
+    "@angular/cli": "^15.1.3",
     "abbrev": "^1.1.1",
     "anymatch": "^3.1.2",
     "balanced-match": "^1.0.2",

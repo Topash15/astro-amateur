@@ -22,6 +22,7 @@ import { CommentsComponent } from './comments/comments.component';
 import { LoginComponent } from './login/login.component';
 import { ErrorCardComponent } from './error-card/error-card.component';
 import { LoadingComponent } from './loading/loading.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { LoadingComponent } from './loading/loading.component';
     CommentsComponent,
     LoginComponent,
     ErrorCardComponent,
-    LoadingComponent
+    LoadingComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { LoadingComponent } from './loading/loading.component';
       { path: 'portfolio/:portfolioId', component: PortfolioDetailsComponent},
       { path: 'learning', component: LearningPageComponent},
       { path: 'about', component: AboutPageComponent},
-      { path: 'learning/:articleId', component: LearningDetailsComponent}
+      { path: 'learning/:articleId', component: LearningDetailsComponent},
+      { path: 'admin', component: AdminPageComponent}
     ]),
     HttpClientModule,
     CommonModule,
