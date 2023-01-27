@@ -55,6 +55,7 @@ export class AdminPageComponent implements OnInit {
   onSubmit(form:any):void {
 
     console.log(form);
+    console.log(this);
 
     // if portfolio
     // this.service.createPhoto(this.model).subscribe();
