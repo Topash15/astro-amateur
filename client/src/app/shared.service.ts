@@ -3,12 +3,23 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment.prod';
 import { Comment } from './comments/comment';
+import { Portfolio, Learning } from './admin-page/models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SharedService {
   constructor(private http: HttpClient) {}
+
+  /** ADMIN ROUTES **/
+  /** Creates a new portfolio item */
+  createPhoto(form: Portfolio): Observable<any> {
+    return this.http.post<any>(
+      `${environment.serverURL}/api/post/photos`,
+      JSON.stringify(form),
+      { headers: { 'Content-Type': 'application/json'}}
+    )
+  }
 
   /**
    * Used to get all photos in the portfolio.

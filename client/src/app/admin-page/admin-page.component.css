@@ -1,7 +1,17 @@
 .admin-container{
     margin-top: 1rem;
     display: grid;
+}
+
+.selection{
+    display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    margin-block: 1rem
+}
+
+button{
+    padding: 1rem 1rem;
 }
 
 textarea{
