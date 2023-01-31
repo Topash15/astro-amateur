@@ -1,0 +1,69 @@
+<div>
+  <form
+    id="learning-form"
+    [hidden]="submitted"
+    #learningForm="ngForm"
+    (ngSubmit)="onSubmit(learningForm)"
+  >
+    <fieldset>
+      <legend data-type="learning">New Learning Article</legend>
+      <div class="form-group">
+        <label for="learning-title">Title</label>
+        <input
+          class="form-control"
+          type="text"
+          name="learningTitle"
+          id="learningTitle"
+          ngModel
+          required
+          #learningTitle="ngModel"
+        />
+      </div>
+      <div class="form-group">
+        <label for="learning-date">Date</label>
+        <input
+          class="form-control"
+          type="date"
+          name="learningDate"
+          id="learningDate"
+          ngModel
+          required
+          #learningDate="ngModel"
+        />
+      </div>
+      <div class="form-group">
+        <label for="learning-summary">Summary</label>
+        <textarea
+          class="form-control"
+          name="learningSummary"
+          id="learningSummary"
+          ngModel
+          required
+          #learningSummary="ngModel"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="learning-body">Body</label>
+        <textarea
+          class="form-control"
+          name="learningBody"
+          id="learningBody"
+          ngModel
+          required
+          #learningBody="ngModel"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" [disabled]="!learningForm.form.valid">
+          Create
+        </button>
+      </div>
+    </fieldset>
+  </form>
+  <div [hidden]="!submitted" class="submitted-content">
+    Title: {{model.title}}
+    Date: {{model.date}}
+    Summary: {{model.summary}}
+    Body: {{model.body}}
+  </div>
+</div>

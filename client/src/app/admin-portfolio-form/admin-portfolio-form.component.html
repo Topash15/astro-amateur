@@ -1,0 +1,224 @@
+<div>
+  <form
+    [hidden]="submitted"
+    id="portfolio-form"
+    (ngSubmit)="onSubmit(portfolioForm)"
+    #portfolioForm="ngForm"
+  >
+    <fieldset>
+      <legend data-type="portfolio">New Portfolio Item</legend>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          required
+          class="form-control"
+          ngModel
+          type="text"
+          name="title"
+          id="title"
+          #title="ngModel"
+        />
+        <div
+          [hidden]="title.valid || title.pristine"
+          class="alert alert-danger"
+        >Title is Required</div>
+      </div>
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input
+          required
+          class="form-control"
+          type="date"
+          name="date"
+          id="date"
+          ngModel
+          #date="ngModel"
+        />
+        <div [hidden]="date.valid || date.pristine" class="alert alert-danger">
+         Date is Required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="summary">Summary</label>
+        <textarea
+          required
+          class="form-control"
+          type="text"
+          name="summary"
+          id="summary"
+          ngModel
+          #summary="ngModel"
+        ></textarea>
+        <div [hidden]="summary.valid || summary.pristine"></div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          required
+          class="form-control"
+          type="text"
+          name="description"
+          id="description"
+          ngModel
+          #description="ngModel"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="camera">Camera</label>
+        <select
+          required
+          class="form-control"
+          name="camera"
+          id="camera"
+          ngModel
+          #camera="ngModel"
+        >
+        <option value="" disabled selected>Select Camera</option>
+          <optgroup label="DSLR">
+            <option value="Canon EOS 550D">Canon EOS 550D</option>
+          </optgroup>
+          <optgroup label="Phones">
+            <option value="Lumia 1020">Lumia 1020</option>
+            <option value="LGV60">LGV60</option>
+          </optgroup>
+          <optgroup label="Other">
+            <option value="GoPro Session 4">GoPro Session 4</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="lens">Lens</label>
+        <select
+          required
+          class="form-control"
+          name="lens"
+          id="lens"
+          ngModel
+          #lens="ngModel"
+        >
+        <option value="" disabled selected>Select Lens</option>
+          <optgroup label="Camera Lens">
+            <option value="Canon EFS 55-250mm">Canon EFS 55-250mm</option>
+            <option value="Helios 44m-7 58mm">Helios 44m-7 58mm</option>
+            <option value="Opteka 500mm">Opteka 500mm</option>
+            <option value="Opteka 1000mm">Opteka 1000mm</option>
+            <option value="SMC Takumar 135mm">SMC Takumar 135mm</option>
+            <option value="SMC Takumar 50mm">SMC Takumar 50mm</option>
+          </optgroup>
+          <optgroup label="Telescopes">
+            <option value="Celestron AstroMaster 114eq">
+              Celestron AstroMaster 114eq
+            </option>
+            <option value="Meade ETX 80">Meade ETX 80</option>
+          </optgroup>
+          <optgroup label="Other">
+            <option value="Default Lens">
+              Default Lens (Built in camera such as cellphone)
+            </option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="aperture">Aperture</label>
+        <input
+          type="number"
+          required
+          class="form-control"
+          name="aperture"
+          id="aperture"
+          placeholder="Number Only"
+          ngModel
+          #aperture="ngModel"
+          min="0"
+        />
+      </div>
+      <div class="form-group">
+        <label for="iso">ISO</label>
+        <select
+          required
+          class="form-control"
+          name="iso"
+          id="iso"
+          ngModel
+          #iso="ngModel"
+          placeholder="Select"
+        >
+          <option value="" disabled selected>Select ISO</option>
+          <option value="100">100</option>
+          <option value="200">200</option>
+          <option value="400">400</option>
+          <option value="800">800</option>
+          <option value="1600">1600</option>
+          <option value="3200">3200</option>
+          <option value="6400">6400</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exposure">Exposure Time</label>
+        <input
+          required
+          class="form-control"
+          type="number"
+          name="exposure"
+          id="exposure"
+          placeholder="Exposure per shot"
+          ngModel
+          #exposure="ngModel"
+          min="0"
+        />
+      </div>
+      <div class="form-group">
+        <label for="theme">Theme</label>
+        <select
+          required
+          class="form-control"
+          name="theme"
+          id="theme"
+          ngModel
+          #theme="ngModel"
+        >
+          <option value="" disabled selected>Select Photo Theme</option>
+          <option value="Deep Space Object">Deep Space Object</option>
+          <option value="Moon">Moon</option>
+          <option value="Planet">Planet</option>
+          <option value="Rocket">Rocket</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="file_name"
+          >File Name
+          <span style="font-size: 0.5rem; color: red"
+            >* Do not include file extension. Only upload .webp to file
+            manager</span
+          ></label
+        >
+        <input
+          required
+          class="form-control"
+          name="file_name"
+          id="file_name"
+          placeholder="Do not include file extension"
+          ngModel
+          #file_name="ngModel"
+        />
+      </div>
+      <div class="form-group">
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="!portfolioForm.form.valid"
+        >
+          Create
+        </button>
+      </div>
+    </fieldset>
+  </form>
+  <div [hidden]="!submitted" class="submitted-content">
+    Title: {{ model.title }} Date: {{ model.date }} Summary:
+    {{ model.summary }} Description: {{ model.description }} Camera:
+    {{ model.camera }} Lens: {{ model.lens }} Aperture:
+    {{ model.aperture }} Exposure Time Per Shot: {{ model.exposure }} Thumbnail
+    path: {{ model.thumbnail }} SD-Source path: {{ model.source }} HD-Source
+    path: {{ model.hdSource }} Theme: {{ model.theme }}
+  </div>
+</div>

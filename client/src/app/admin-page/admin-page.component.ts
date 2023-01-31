@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Portfolio, Learning } from './models';
 import { SharedService } from '../shared.service';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
-import { Validators } from '@angular/forms';
 
 export type EditorType = 'portfolio' | 'learning';
 
@@ -16,12 +13,6 @@ export class AdminPageComponent implements OnInit {
 
   submitted: boolean = false;
   editor: EditorType = "portfolio";
-
-  // portfolioForm = this.fb.group({
-  //   title: ['', Validators.required],
-  //   summary: [''],
-
-  // })
 
   constructor(private route: ActivatedRoute, private service: SharedService) { }
 
