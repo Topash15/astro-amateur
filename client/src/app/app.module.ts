@@ -23,6 +23,8 @@ import { LoginComponent } from './login/login.component';
 import { ErrorCardComponent } from './error-card/error-card.component';
 import { LoadingComponent } from './loading/loading.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AdminPortfolioFormComponent } from './admin-portfolio-form/admin-portfolio-form.component';
+import { AdminLearningFormComponent } from './admin-learning-form/admin-learning-form.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     LoginComponent,
     ErrorCardComponent,
     LoadingComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    AdminPortfolioFormComponent,
+    AdminLearningFormComponent
   ],
   imports: [
     BrowserModule,
