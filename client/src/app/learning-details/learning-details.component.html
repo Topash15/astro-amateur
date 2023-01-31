@@ -5,13 +5,7 @@
     <h3 class="learning-title">{{ learningArticle.title }}</h3>
     <p class="learning-date">{{ learningArticle.date }}</p>
   </div>
-  <p class="learning-body">{{ learningArticle.body }}</p>
-  <p class="learning-body" *ngIf="learningArticle.body2">
-    {{ learningArticle.body2 }}
-  </p>
-  <p class="learning-body" *ngIf="learningArticle.body3">
-    {{ learningArticle.body3 }}
-  </p>
+  <p class="learning-body" [innerHTML]="learningArticle.body"></p>
   <div
     class="learning-links-container"
     *ngIf="learningArticle.articles && learningArticle.articles.length"
