@@ -1,0 +1,27 @@
+button{
+    padding: .5rem 1rem;
+}
+
+textarea{
+    height:6rem;
+}
+
+.form-group{
+    margin-top: 1rem;
+    display: grid;
+    gap: .5em;
+    max-width: 7rem;
+    margin-inline: auto;
+}
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }
+
+  #login-container{
+    position: absolute;
+  }

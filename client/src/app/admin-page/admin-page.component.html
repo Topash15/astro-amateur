@@ -1,12 +1,21 @@
 <section class="admin-container container">
-  <div class="selection container">
-  <button type="button" (click)="toggleEditor('portfolio')">Add Photo</button>
-  <button type="button" (click)="toggleEditor('learning')">Add Learning Article</button>
+  <div id="login">
+    <app-login></app-login>
   </div>
-  <div *ngIf="showPortfolioForm" id="add-portfolio">
-    <app-admin-portfolio-form></app-admin-portfolio-form>
-  </div>
-  <div *ngIf="showLearningForm" id="add-learning-article">
-    <app-admin-learning-form></app-admin-learning-form>
+  <div class="pw-protected-container">
+    <div class="selection container">
+      <button type="button" (click)="toggleEditor('portfolio')">
+        Add Photo
+      </button>
+      <button type="button" (click)="toggleEditor('learning')">
+        Add Learning Article
+      </button>
+    </div>
+    <div *ngIf="showPortfolioForm" id="add-portfolio">
+      <app-admin-portfolio-form></app-admin-portfolio-form>
+    </div>
+    <div *ngIf="showLearningForm" id="add-learning-article">
+      <app-admin-learning-form></app-admin-learning-form>
+    </div>
   </div>
 </section>

@@ -34,7 +34,6 @@ export class AdminPortfolioFormComponent implements OnInit {
       source,
       form.controls.theme.value
     );
-    console.log(this.model);
     this.submitted = true;
   }
 
