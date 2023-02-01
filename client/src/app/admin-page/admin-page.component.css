@@ -1,33 +1,44 @@
-.admin-container{
-    margin-top: 1rem;
-    display: grid;
+.admin-container {
+  margin-top: 1rem;
+  display: grid;
 }
 
-.selection{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    margin-block: 1rem
+.selection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  margin-block: 1rem;
 }
 
-button{
-    padding: 1rem 1rem;
+button {
+  padding: 1rem 1rem;
 }
 
-textarea{
-    height:6rem;
+textarea {
+  height: 6rem;
 }
 
-.form-group{
-    margin-top: 1rem;
-    display: grid;
-    gap: .5em;
+.form-group {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.5em;
 }
 
-.ng-valid[required], .ng-valid.required  {
-    border-left: 5px solid #42A948; /* green */
-  }
-  
-  .ng-invalid:not(form)  {
-    border-left: 5px solid #a94442; /* red */
-  }
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid #42a948; /* green */
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442; /* red */
+}
+
+#login{
+    background: rgba(0, 0, 0, 0.88);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}

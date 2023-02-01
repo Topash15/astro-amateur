@@ -24,4 +24,9 @@ textarea{
 
   #login-container{
     position: absolute;
+    width: 30rem;
+    background: black;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
