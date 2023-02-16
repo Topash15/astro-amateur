@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../environments/environment.prod';
-import { Comment } from './comments/comment';
-import { Portfolio } from './admin-portfolio-form/portfolio';
-import { Learning } from './admin-learning-form/learning';
+import { environment } from '../../../environments/environment.prod';
+import { Comment } from '../../comments/comment';
+import { Portfolio } from '../../admin-portfolio-form/portfolio';
+import { Learning } from '../../admin-learning-form/learning';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +17,14 @@ export class SharedService {
   createPhoto(form: Portfolio): Observable<any> {
     return this.http.post<any>(
       `${environment.serverURL}/api/post/photos`,
+      JSON.stringify(form),
+      { headers: { 'Content-Type': 'application/json'}}
+    )
+  }
+  /** Creates a new learning article item */
+  createArticle(form: Learning): Observable<any> {
+    return this.http.post<any>(
+      `${environment.serverURL}/api/post/article`,
       JSON.stringify(form),
       { headers: { 'Content-Type': 'application/json'}}
     )

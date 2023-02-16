@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SharedService } from '../shared.service';
+import { SharedService } from '../_services/shared/shared.service';
 import { Observable } from 'rxjs';
 import { convertDate } from '../utilites/helper';
 

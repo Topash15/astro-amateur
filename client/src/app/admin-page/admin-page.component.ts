@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from '../shared.service';
+import { SharedService } from '../_services/shared/shared.service';
 import { ActivatedRoute } from '@angular/router';
 
 export type EditorType = 'portfolio' | 'learning';

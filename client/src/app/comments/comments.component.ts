@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Comment } from './comment';
-import { SharedService } from '../shared.service';
+import { SharedService } from '../_services/shared/shared.service';
 import { convertDate } from '../utilites/helper';
 
 @Component({
